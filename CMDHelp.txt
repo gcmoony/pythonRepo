@@ -1,0 +1,6 @@
+move - mv
+delete - rm
+change directory - cd
+view directory - dir
+make directory - mkdir
+remove directory - rmdir
