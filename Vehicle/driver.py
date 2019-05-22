@@ -23,6 +23,13 @@ def main():
 
     # Create Car Instance
     myCar = Car.Car()
+    print(myCar)
+
+    # Test Car Instance
+    printSpeed(myCar)
+    myCar.speedUp(speedValues[3])
+    printSpeed(myCar)
+    print(myCar.wheelAmt())
 
 if __name__ == "__main__":
     main()
