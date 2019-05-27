@@ -9,4 +9,4 @@ A repository dediccated to working with Python related programs.
 
 
 
-<a href = "https://babulnokrek.com/python-as-a-programming-language-why-should-you-learn-python/">Banner link</a>
+<a href = "https://babulnokrek.com/wp-content/uploads/2018/11/Python.png">Banner link</a>
