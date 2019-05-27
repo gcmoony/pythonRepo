@@ -4,3 +4,8 @@ change directory - cd
 view directory - dir
 make directory - mkdir
 remove directory - rmdir
+
+
+Running IDLE through CMD (Laptop Directory) - "C:\Program Files (x86)\Python36-32\python.exe"
+
+Running a program through CMD - Just enter the driver name
