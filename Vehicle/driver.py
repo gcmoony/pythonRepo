@@ -1,5 +1,6 @@
 import Vehicle
 import Car
+import Boat
 
 def printSpeed(aVehicle):
     print("Speed:", aVehicle.getSpeed(), "mph")
@@ -30,6 +31,12 @@ def main():
     myCar.speedUp(speedValues[3])
     printSpeed(myCar)
     print(myCar.wheelAmt())
+
+    # Create Boat Instance
+    myBoat = Boat.Boat()
+    print(myBoat)
+    printSpeed(myBoat)
+    print(myBoat.getMotarSize())
 
 if __name__ == "__main__":
     main()
