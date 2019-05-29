@@ -7,6 +7,7 @@ class gameBoard():
                       4:" ", 5:" ", 6:" ",
                       7:" ", 8:" ", 9:" "}
         self.pieces = ["X", "O"]
+        self.aiUse = False
         self.spotList = []
         iter = 0
         for iter in range(9):
@@ -18,6 +19,9 @@ class gameBoard():
         if spot in self.spotList:
             self.board[spot] = piece
             self.spotList.remove(spot)
+
+    def aiPlay(self):
+        pass
 
     def __str__(self):
         strDef = ""
