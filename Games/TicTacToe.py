@@ -2,12 +2,12 @@ import random
 
 class gameBoard():
 
-    def __init__(self):
+    def __init__(self, aiUse = False):
         self.board = {1:" ", 2:" ", 3:" ",
                       4:" ", 5:" ", 6:" ",
                       7:" ", 8:" ", 9:" "}
         self.pieces = ["X", "O"]
-        self.aiUse = False
+        self.aiUse = aiUse
         self.spotList = []
         iter = 0
         for iter in range(9):
@@ -21,7 +21,9 @@ class gameBoard():
             self.spotList.remove(spot)
 
     def aiPlay(self):
-        pass
+        choice = 0
+        while(choice not in self.spotList):
+            random.randint(1, 9)
 
     def __str__(self):
         strDef = ""
@@ -42,12 +44,26 @@ class gameBoard():
         return strDef
 
 # Initialize Game
-newGame = gameBoard()
-print(newGame)
-print(newGame.spotList)
-newGame.placePiece(0, 3)
-print(newGame)
-print(newGame.spotList)
-newGame.placePiece(1, 5)
-print(newGame)
-print(newGame.spotList)
+aGame = gameBoard()
+gameQuit = ""
+player = 0
+print(aGame)
+while(gameQuit != "q" and aGame.spotList != []):
+    gameQuit = input("Choose spot: ")
+    try:
+        gameQuit = int(gameQuit)
+        while(gameQuit not in aGame.spotList and gameQuit != "q"):
+            gameQuit = input("Choose spot: ")
+            try:
+                gameQuit = int(gameQuit)
+            except:
+                print("Something else happened here")
+        aGame.placePiece(player, gameQuit)
+        if player == 0:
+            player += 1
+        else:
+            player -= 1
+        print(aGame)
+    except:
+        print("Thanks for playing!")
+    
