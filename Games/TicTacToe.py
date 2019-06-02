@@ -7,6 +7,7 @@ class gameBoard():
                       4:" ", 5:" ", 6:" ",
                       7:" ", 8:" ", 9:" "}
         self.pieces = ["X", "O"]
+        self.gameOver = False
         self.aiUse = aiUse
         self.spotList = []
         iter = 0
@@ -24,6 +25,17 @@ class gameBoard():
         choice = 0
         while(choice not in self.spotList):
             random.randint(1, 9)
+
+    def testItem(self, userInput):
+        try:
+            userInput = int(userInput)
+            return userInput
+        except:
+            if userInput.lower() != 'q':
+                print("Invalid Command")
+
+    def getInput(self):
+
 
     def __str__(self):
         strDef = ""
@@ -50,20 +62,3 @@ player = 0
 print(aGame)
 while(gameQuit != "q" and aGame.spotList != []):
     gameQuit = input("Choose spot: ")
-    try:
-        gameQuit = int(gameQuit)
-        while(gameQuit not in aGame.spotList and gameQuit != "q"):
-            gameQuit = input("Choose spot: ")
-            try:
-                gameQuit = int(gameQuit)
-            except:
-                print("Something else happened here")
-        aGame.placePiece(player, gameQuit)
-        if player == 0:
-            player += 1
-        else:
-            player -= 1
-        print(aGame)
-    except:
-        print("Thanks for playing!")
-    
