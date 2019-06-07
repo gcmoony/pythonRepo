@@ -19,32 +19,48 @@ class gameBoard():
         for iter in range(9):
             self.spotList.append(iter + 1)
 
-    def placePiece(self, player, spot):
+    def placePiece(self, spot):
+        """
+        Places game piece in designated spot.
+        Returns True if placement was successful.
+        """
+        player = 1
+        if(self.isPlayerOne):
+            player = 0
         piece = self.pieces[player]
         # Play pieces only in empty spots
         if spot in self.spotList:
             self.board[spot] = piece
             self.spotList.remove(spot)
+            self.isPlayerOne = not self.isPlayerOne
+            return True
+        return False
 
     def aiPlay(self):
-        choice = 0
-        while(choice not in self.spotList):
-            random.randint(1, 9)
+        pass
 
     def testItem(self, userInput):
+        """
+        Tests input for valid placement or command
+        """
         try:
             userInput = int(userInput)
-            return userInput
         except:
             if userInput.lower() != 'q':
                 print("Invalid Command")
+        return userInput
 
     def getInput(self):
+        """
+        
+        """
         playerStr = "1: "
-        if(self.isPlayerOne):
+        if(not self.isPlayerOne):
             playerStr = "2: "
-        newCommand = input("Player ", playerStr)
-        self.isPlayerOne = not self.isPlayerOne
+        print("Player {} ".format(playerStr))
+        newCommand = input("--> ")
+        newCommand = self.testItem(newCommand)
+        return newCommand
 
     def __str__(self):
         board = self.board
@@ -59,3 +75,9 @@ class gameBoard():
 aGame = gameBoard()
 gameQuit = ""
 print(aGame)
+while(gameQuit != "q"):
+    gameQuit = aGame.getInput()
+    if(isinstance(gameQuit, int)):
+        placeSuccess = aGame.placePiece(gameQuit)
+        if (placeSuccess):
+            print(aGame)
