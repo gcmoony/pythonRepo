@@ -8,6 +8,7 @@ class gameBoard():
                       7:" ", 8:" ", 9:" "}
         self.pieces = ["X", "O"]
         self.gameOver = False
+        self.isPlayerOne = True
         self.aiUse = aiUse
         self.spotList = []
         iter = 0
@@ -35,7 +36,10 @@ class gameBoard():
                 print("Invalid Command")
 
     def getInput(self):
-
+        playerStr = "1: "
+        if(self.isPlayerOne):
+            playerStr = "2: "
+        newCommand = input("Player ", playerStr)
 
     def __str__(self):
         strDef = ""
@@ -61,4 +65,4 @@ gameQuit = ""
 player = 0
 print(aGame)
 while(gameQuit != "q" and aGame.spotList != []):
-    gameQuit = input("Choose spot: ")
+    aGame.getInput()
