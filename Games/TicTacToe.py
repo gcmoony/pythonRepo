@@ -3,6 +3,10 @@ import random
 class gameBoard():
 
     def __init__(self, aiUse = False):
+        """
+        Initialize a new board. Default mode is two-player, enter parameter
+        'True' for board use with AI.
+        """
         self.board = {1:" ", 2:" ", 3:" ",
                       4:" ", 5:" ", 6:" ",
                       7:" ", 8:" ", 9:" "}
@@ -40,29 +44,18 @@ class gameBoard():
         if(self.isPlayerOne):
             playerStr = "2: "
         newCommand = input("Player ", playerStr)
+        self.isPlayerOne = not self.isPlayerOne
 
     def __str__(self):
-        strDef = ""
-        counter = 0
-        sep = 0
-        for spot in self.board:
-            strDef += str(self.board[spot])
-            counter += 1
-            if counter == 3:
-                counter = 0
-                strDef += "\n"
-                if sep < 2:
-                    strDef += "----------\n"
-                    sep += 1
-            else:
-                strDef += " | "
-        strDef += "\n==============\n"
+        board = self.board
+        strDef = " {} | {} | {}\n".format(board[1], board[2], board[3]) +\
+                 "-----------\n" +\
+                 " {} | {} | {}\n".format(board[4], board[5], board[6]) +\
+                 "-----------\n" +\
+                 " {} | {} | {}\n".format(board[7], board[8], board[9])
         return strDef
 
 # Initialize Game
 aGame = gameBoard()
 gameQuit = ""
-player = 0
 print(aGame)
-while(gameQuit != "q" and aGame.spotList != []):
-    aGame.getInput()
