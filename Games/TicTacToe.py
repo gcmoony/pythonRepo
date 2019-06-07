@@ -36,6 +36,56 @@ class gameBoard():
             return True
         return False
 
+    def checkRow(self):
+        """
+        Checks rows of the game board
+        """
+        check = False
+        bd = self.board
+        rows = [ [ bd[1], bd[2], bd[3] ],
+                 [ bd[4], bd[5], bd[6] ],
+                 [ bd[7], bd[8], bd[9] ] ]
+        for row in rows:
+            if(row[0] == row[1] == row[2] != " "):
+                check = True
+        return check
+
+    def checkCol(self):
+        """
+        Checks columns of the game board
+        """
+        check = False
+        bd = self.board
+        cols = [ [ bd[1], bd[4], bd[7] ],
+                 [ bd[2], bd[5], bd[8] ],
+                 [ bd[3], bd[6], bd[9] ] ]
+        for col in cols:
+            if(col[0] == col[1] == col[2] != " "):
+                check = True
+        return check
+
+    def checkDiag(self):
+        """
+        Checks both diagonals of the game board
+        """
+        check = False
+        bd = self.board
+        diagonals = [ [bd[1], bd[5], bd[9]],
+                      [bd[3], bd[5], bd[7]] ]
+        for diags in diagonals:
+            if(diags[0] == diags[1] == diags[2] != " "):
+                check = True
+        return check
+
+    def checkAll(self):
+        """
+        Calls all check methods and returns True if
+        at least one method returns True.
+        """
+        if(self.checkRow() or self.checkCol() or self.checkDiag()):
+            return True
+        return False
+
     def aiPlay(self):
         pass
 
@@ -52,7 +102,7 @@ class gameBoard():
 
     def getInput(self):
         """
-        
+
         """
         playerStr = "1: "
         if(not self.isPlayerOne):
@@ -74,10 +124,13 @@ class gameBoard():
 # Initialize Game
 aGame = gameBoard()
 gameQuit = ""
+gameFin = False
 print(aGame)
-while(gameQuit != "q"):
+while(gameQuit != "q" and gameQuit != "n"):
     gameQuit = aGame.getInput()
     if(isinstance(gameQuit, int)):
         placeSuccess = aGame.placePiece(gameQuit)
         if (placeSuccess):
             print(aGame)
+            gameFin = aGame.checkAll()
+            print(gameFin)
