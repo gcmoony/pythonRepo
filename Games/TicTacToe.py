@@ -96,9 +96,13 @@ class gameBoard():
         try:
             userInput = int(userInput)
         except:
-            if userInput.lower() != 'q':
+            if userInput.lower() not in ['q', 'y', 'n']:
                 print("Invalid Command")
         return userInput
+
+    def clearBoard(self):
+        for spot in self.board:
+            spot = " "
 
     def getInput(self):
         """
@@ -133,4 +137,10 @@ while(gameQuit != "q" and gameQuit != "n"):
         if (placeSuccess):
             print(aGame)
             gameFin = aGame.checkAll()
-            print(gameFin)
+    if(gameFin):
+        print("Game over! Play again? (y/n)")
+        gameQuit = aGame.getInput()
+    if(gameQuit == 'y'):
+        aGame.clearBoard()
+        print(aGame)
+        gameFin = False
