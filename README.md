@@ -7,7 +7,7 @@ A repository dedicated to working with an assortment of Python related programs.
 | Logging| Logging the status of a running program utilizing Python's built-in library 'logging'. | Standby   :heavy_minus_sign: |
 | Data Structure | Several ways of handling data using different implementations of data structures. | Standby   :heavy_minus_sign: |
 | Games | Introduction of simple command line games using Python. | Ongoing   :small_orange_diamond: |
-
+| Automation | Programs dedicated to automating common tasks. | Standby :heavy_minus_sign: |
 
 
 <a href = "https://babulnokrek.com/wp-content/uploads/2018/11/Python.png">Banner link</a>
