@@ -1,5 +1,5 @@
 # pythonRepo
-A repository dediccated to working with Python related programs.
+A repository dedicated to working with an assortment of Python related programs.
 
 | Projects | Description | Status |
 | :---: | :---: | :---: |
