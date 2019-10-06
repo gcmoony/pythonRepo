@@ -11,6 +11,7 @@ class Node():
         self.nodeInfo = anObject
         self.nextNode = None
 
+
     def  copyNode(self):
         """
         Creates a copy of the current node and returns a node object
@@ -35,8 +36,20 @@ class Node():
         """
         self.nextNode = None
 
+    def getNodeInfo(self):
+        """
+        Retrieve the information stored within the node
+        :return: anObject value
+        """
+        return self.nodeInfo
+
     def __str__(self):
         """
         Returns data stored inside the node
         """
         return self.nodeInfo
+
+
+def printNode(aNode):
+    if(type(aNode) == Node):
+        print(Node)

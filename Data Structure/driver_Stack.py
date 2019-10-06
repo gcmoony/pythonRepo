@@ -27,6 +27,8 @@ def main():
     personList[0].nextNode = personList[1]
     print(personList[0].getNextNode())
 
+    getNodeInfo(personNode1)
+
 
 if __name__ == '__main__':
     main()

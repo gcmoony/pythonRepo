@@ -1,146 +1,123 @@
 import random
 
-class gameBoard():
+class TicTacToe():
 
     def __init__(self, aiUse = False):
         """
         Initialize a new board. Default mode is two-player, enter parameter
         'True' for board use with AI.
         """
-        self.board = {1:" ", 2:" ", 3:" ",
-                      4:" ", 5:" ", 6:" ",
-                      7:" ", 8:" ", 9:" "}
-        self.pieces = ["X", "O"]
-        self.gameOver = False
-        self.isPlayerOne = True
+        # Create board
+        self.board = []
+        for row in range(3): # 3 Rows
+            aRow = []
+            for col in range(3): # 3 Columns
+                aCol = " "
+                aRow.append(aCol)
+            self.board.append(aRow)
+        self.isComplete = False
+
+        # Create players
+        self.player1 = "X"
+        self.player2 = "O"
+        self.playerTurn = self.player1
         self.aiUse = aiUse
-        self.spotList = []
-        iter = 0
-        for iter in range(9):
-            self.spotList.append(iter + 1)
 
-    def placePiece(self, spot):
+    def switchPlayer(self):
         """
-        Places game piece in designated spot.
-        Returns True if placement was successful.
+        Changes the current player status. This will allow for
+        placement of both player pieces.
+        :return: none
         """
-        player = 1
-        if(self.isPlayerOne):
-            player = 0
-        piece = self.pieces[player]
-        # Play pieces only in empty spots
-        if spot in self.spotList:
-            self.board[spot] = piece
-            self.spotList.remove(spot)
-            self.isPlayerOne = not self.isPlayerOne
-            return True
-        return False
+        # Switch player turn
+        if(self.playerTurn == self.player1 ):
+            self.playerTurn = self.player2
+        else:
+            self.playerTurn = self.player1
 
-    def checkRow(self):
+    def commandListener(self):
         """
-        Checks rows of the game board
+        Allows the user to enter a command and will call an appropriate
+        function corresponding to the command, otherwise the function
+        will recall itself until a valid command is given
+        :return: None
         """
-        check = False
-        bd = self.board
-        rows = [ [ bd[1], bd[2], bd[3] ],
-                 [ bd[4], bd[5], bd[6] ],
-                 [ bd[7], bd[8], bd[9] ] ]
-        for row in rows:
-            if(row[0] == row[1] == row[2] != " "):
-                check = True
-        return check
+        # List Valid Inputs
+        generalCommands = ["q"]
 
-    def checkCol(self):
-        """
-        Checks columns of the game board
-        """
-        check = False
-        bd = self.board
-        cols = [ [ bd[1], bd[4], bd[7] ],
-                 [ bd[2], bd[5], bd[8] ],
-                 [ bd[3], bd[6], bd[9] ] ]
-        for col in cols:
-            if(col[0] == col[1] == col[2] != " "):
-                check = True
-        return check
+        # Get User Input
+        print("Player {}'s turn: ".format(self.playerTurn))
+        userInput = input()
 
-    def checkDiag(self):
-        """
-        Checks both diagonals of the game board
-        """
-        check = False
-        bd = self.board
-        diagonals = [ [bd[1], bd[5], bd[9]],
-                      [bd[3], bd[5], bd[7]] ]
-        for diags in diagonals:
-            if(diags[0] == diags[1] == diags[2] != " "):
-                check = True
-        return check
-
-    def checkAll(self):
-        """
-        Calls all check methods and returns True if
-        at least one method returns True.
-        """
-        if(self.checkRow() or self.checkCol() or self.checkDiag()):
-            return True
-        return False
-
-    def aiPlay(self):
-        pass
-
-    def testItem(self, userInput):
-        """
-        Tests input for valid placement or command
-        """
+        # Test User Input
         try:
             userInput = int(userInput)
+            self.placePiece(userInput)
         except:
-            if userInput.lower() not in ['q', 'y', 'n']:
-                print("Invalid Command")
-        return userInput
+            if(userInput in generalCommands ):
+                if(userInput == "q"):
+                    self.quitGame()
+            else:
+                print("Sorry, invalid command!\n")
+                self.commandListener()
 
-    def clearBoard(self):
-        for spot in self.board:
-            spot = " "
 
-    def getInput(self):
-        """
 
-        """
-        playerStr = "1: "
-        if(not self.isPlayerOne):
-            playerStr = "2: "
-        print("Player {} ".format(playerStr))
-        newCommand = input("--> ")
-        newCommand = self.testItem(newCommand)
-        return newCommand
+    def quitGame(self):
+        self.isComplete = True
+
+
 
     def __str__(self):
-        board = self.board
-        strDef = " {} | {} | {}\n".format(board[1], board[2], board[3]) +\
-                 "-----------\n" +\
-                 " {} | {} | {}\n".format(board[4], board[5], board[6]) +\
-                 "-----------\n" +\
-                 " {} | {} | {}\n".format(board[7], board[8], board[9])
-        return strDef
+        """
+        Creates a string representation of the tic tac toe board.
+        This means a grid and player pieces will be displayed.
+        :return: String representation of the game board
+        """
+        rtrnStr = ""
+        colCount = 0
+        for row in self.board:
+            rowCount = 0
+            for spot in row:
+                rtrnStr += str(spot)
+                if(rowCount < 2 ):
+                    rtrnStr += " | "
+                rowCount += 1
+            if(colCount < 2):
+                rtrnStr += "\n---------\n"
+            colCount += 1
+        rtrnStr += "\n\n"
+        return rtrnStr
 
-# Initialize Game
-aGame = gameBoard()
-gameQuit = ""
-gameFin = False
-print(aGame)
-while(gameQuit != "q" and gameQuit != "n"):
-    gameQuit = aGame.getInput()
-    if(isinstance(gameQuit, int)):
-        placeSuccess = aGame.placePiece(gameQuit)
-        if (placeSuccess):
-            print(aGame)
-            gameFin = aGame.checkAll()
-    if(gameFin):
-        print("Game over! Play again? (y/n)")
-        gameQuit = aGame.getInput()
-    if(gameQuit == 'y'):
-        aGame.clearBoard()
-        print(aGame)
-        gameFin = False
+
+    def placePiece(self, spot):
+        if( 0 > spot or spot > 9 ):
+            print("Invalid Placement")
+            print("Hint: Try values 1 - 9")
+            self.commandListener()
+
+        else:
+            spot -= 1
+            row = spot // 3
+            col = spot % 3
+            if(self.board[row][col] == " "):
+                self.board[row][col] = self.playerTurn
+                self.switchPlayer()
+            else:
+                print("Not empty, try again")
+                self.commandListener()
+
+
+
+
+def main():
+
+    aGame = TicTacToe(False)
+    print(aGame)
+    aGame.commandListener()
+    print(aGame)
+    aGame.commandListener()
+    print(aGame)
+
+if __name__ == '__main__':
+    main()
