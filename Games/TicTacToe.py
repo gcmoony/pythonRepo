@@ -1,6 +1,14 @@
 import random
 
 class TicTacToe():
+    """
+    This is a simple user input style Tic-Tac-Toe game. This can be played
+    with one or two players.
+
+    Attributes:
+            aiUse (Boolean): Single player mode has been chosen, and an
+                             AI will be enabled to play against the player
+    """
 
     def __init__(self, aiUse = False):
         """
@@ -48,6 +56,7 @@ class TicTacToe():
         # Get User Input
         print("Player {}'s turn: ".format(self.playerTurn))
         userInput = input()
+        print() # New Line
 
         # Test User Input
         try:
@@ -61,12 +70,73 @@ class TicTacToe():
                 print("Sorry, invalid command!\n")
                 self.commandListener()
 
-
+    def isRunning(self):
+        """
+        Checks to see if the game is still currently running
+        :return: A boolean representation of the running game
+        """
+        return not self.isComplete
 
     def quitGame(self):
+        """
+        Ends the current game
+        :return: none
+        """
         self.isComplete = True
 
+    def checkRows(self):
+        """
+        Checks all the rows of the game board
+        to see if all spaces in a single row contain
+        the same game piece.
+        If a winner is found, method will quit the game
+        :return: None
+        """
+        for row in self.board:
+            if row[0] == row[1] == row[2] != " ":
+                self.quitGame()
+                print("\n\n{} won!".format(row[0]))
+                print("Game Over\n")
 
+    def checkCols(self):
+        """
+        Checks all the rows of the game board
+        to see if all spaces in a single column contain
+        the same game piece.
+        If a winner is found, method will quit the game
+        :return: None
+        """
+        for col in range(3):
+            if self.board[0][col] == self.board[1][col]\
+                == self.board[2][col] != " ":
+                self.quitGame()
+                print("\n\n{} won!".format(self.board[0][col]))
+                print("Game Over\n")
+
+    def checkDiag(self):
+        """
+        Checks both diagonals of the board to see if the pieces placed within
+        are matching game pieces.
+        If a winner is found, method will quit the game
+        :return: None
+        """
+        bd = self.board
+        if(bd[0][0] == bd[1][1] == bd[2][2] != " " or\
+                bd[0][2] == bd[1][1] == bd[2][0] != " "):
+            self.quitGame()
+            print("\n\n{} won!".format(bd[1][1]))
+            print("Game Over\n")
+
+    def checkBoard(self):
+        bd = self.board
+        emptySpotExists = False
+        for row in bd:
+            if " " in row:
+                emptySpotExists = True
+        if(emptySpotExists == False):
+            self.quitGame()
+            print("\n\nGame Over!")
+            print("No winner here today...")
 
     def __str__(self):
         """
@@ -91,7 +161,14 @@ class TicTacToe():
 
 
     def placePiece(self, spot):
-        if( 0 > spot or spot > 9 ):
+        """
+        Tests a given spot for correct board piece placement. If a spot is vacant,
+        the designated player piece will be placed on the board. If the spot is full,
+        the method will display an error message
+        :param spot: An integer representation of a valid spot on the game board
+        :return: None
+        """
+        if( 0 >= spot or spot > 9 ):
             print("Invalid Placement")
             print("Hint: Try values 1 - 9")
             self.commandListener()
@@ -113,10 +190,13 @@ class TicTacToe():
 def main():
 
     aGame = TicTacToe(False)
-    print(aGame)
-    aGame.commandListener()
-    print(aGame)
-    aGame.commandListener()
+    while(aGame.isRunning()):
+        print(aGame)
+        aGame.commandListener()
+        aGame.checkRows()
+        aGame.checkCols()
+        aGame.checkDiag()
+        aGame.checkBoard()
     print(aGame)
 
 if __name__ == '__main__':
