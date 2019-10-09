@@ -9,5 +9,3 @@ A repository dedicated to working with an assortment of Python related programs.
 | Games | Introduction of simple command line games using Python. | Ongoing   :small_orange_diamond: |
 | Automation | Programs dedicated to automating common tasks. | Standby :heavy_minus_sign: |
 
-
-<a href = "https://babulnokrek.com/wp-content/uploads/2018/11/Python.png">Banner link</a>
