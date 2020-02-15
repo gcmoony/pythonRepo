@@ -10,8 +10,8 @@ my exclusive search.
 
 def main():
     # Variables n stuff
-    main_directory = "D:\\Pictures\\Stuff\\Photos Storage\\takeout-20191031T195241Z-002\\Takeout\\Google Photos\\" # Could add double '\' so no modifiers accidentally occur
-    storage_directory = "D:\\Pictures\\Stuff\\Photos Storage" + "\\Moved Files\\" # Where you wanna store your pictures and stuff
+    main_directory = "D:\\Some Example Directory\\takeout-xxexampletakoutfolderxx\\Takeout\\Google Photos\\" # Could add double '\' so no modifiers accidentally occur
+    storage_directory = "D:\\Some Example Directory\\" + "Moved Files\\" # Where you wanna store your pictures and stuff
     file_ext_avoid = [".json"] # File extensions you want to ignore
     curr_dir_files = [] # This variable stores current directory items, such as folders and text files
     dupe_count = 0 # In case you have two similarly named files, this will allow you to rename a duplicate name and still save whatever file it was
