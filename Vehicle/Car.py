@@ -7,4 +7,4 @@ class Car(Vehicle.Vehicle):
         self.wheels = wheels
 
     def wheelAmt(self):
-        return self.wheels
+        return str(self.wheels) + "Wheels"

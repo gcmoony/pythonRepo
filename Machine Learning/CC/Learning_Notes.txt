@@ -1,0 +1,10 @@
+Loss is the difference between the actual y value of the data and the predicted y value
+of the data. if you can minimize the value, the better your predicted outcome will be.
+
+Gradience decent is considered the 'learning rate', meaning how long it will take your
+program to reach the optimus to obtain good prediction values. If the value is too large,
+the desired predictions will never be reached, and if the value is too small, it will take
+forever to reach. 
+
+In regression, gradient decent is used to tune the parameters to reach a desired program
+faster for minimum loss.

@@ -36,7 +36,7 @@ def main():
     myBoat = Boat.Boat()
     print(myBoat)
     printSpeed(myBoat)
-    print(myBoat.getMotarSize())
+    print(myBoat.getMotorSize())
 
 if __name__ == "__main__":
     main()

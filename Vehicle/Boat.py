@@ -7,5 +7,5 @@ class Boat(Vehicle.Vehicle):
         Vehicle.Vehicle.__init__(self, weight, color, speed)
         self.motorSize = motorSize
 
-    def getMotarSize(self):
-        return self.motorSize
+    def getMotorSize(self):
+        return str(self.motorSize) + " Liter"
