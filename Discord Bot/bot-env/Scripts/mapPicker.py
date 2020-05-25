@@ -8,6 +8,6 @@ def chooseMap():
                "Labs",
                "Interchange",
                "Woods"]
-    print("Go to: ", random.choice(choices))
+    return random.choice(choices)
 
 chooseMap()
