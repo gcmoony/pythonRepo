@@ -1,4 +1,5 @@
 import discord
+import os
 
 # make sure to source it
 # go to your bot folder
@@ -36,12 +37,13 @@ async def on_message(message):
         await message.channel.send(file=discord.File('D:\\Pictures\\Stuff\\DONKEYTIMEOVER.png'))
 
     if message.content.startswith('$goHome'):
-       close()
+       await close()
 
     if message.content.startswith('$whoAmI'):
         print(message.author)
 
 
 
-
-client.run('NjgzNTcyMjUwMjQyNTgwNTI5.XlthOQ.fxoXuba1ysp6Un-EFkbppXjc6z0')
+with open("textFilesLel\\keys.txt", "r") as file:
+    key = file.readline()
+client.run(key)
