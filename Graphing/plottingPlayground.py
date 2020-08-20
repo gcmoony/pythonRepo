@@ -56,7 +56,7 @@ def example03():
 
 
 def main():
-    #example01()
+    example01()
     example02()
     example03()
 
