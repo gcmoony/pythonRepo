@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 import random as rand
 
 def plotList(coordList):
-    pass
+    plt.plot(coordList)
+    plt.show()
 
 def createList(inclusiveA, exclusiveB, totalValues = 5, workingList = None):
     if workingList != None:
@@ -16,9 +17,9 @@ def createList(inclusiveA, exclusiveB, totalValues = 5, workingList = None):
     return workingList
 
 def main():
-    myList = createList(4, 20, 15)
+    myList = createList(inclusiveA= 4, exclusiveB = 20, totalValues= 6)
     print(myList)
-    #plotList()
+    plotList(myList)
 
 if __name__ == "__main__":
     main()
