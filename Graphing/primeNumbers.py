@@ -1,8 +1,10 @@
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 import random as rand
 
 def plotList(coordList):
-    plt.plot(coordList)
+    plt.plot(coordList, animated = True)
+    ani = animation.FuncAnimation(plt, )
     plt.show()
 
 def createList(inclusiveA, exclusiveB, totalValues = 5, workingList = None):
@@ -11,7 +13,6 @@ def createList(inclusiveA, exclusiveB, totalValues = 5, workingList = None):
             workingList.append(rand.randint(inclusiveA, exclusiveB))    
             createList(inclusiveA, exclusiveB, totalValues, workingList)
     else:
-        testVariable = "Why"
         workingList = []
         workingList.append(rand.randint(inclusiveA, exclusiveB))
         createList(inclusiveA, exclusiveB, totalValues, workingList)
