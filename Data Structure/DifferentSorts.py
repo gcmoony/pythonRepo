@@ -12,7 +12,7 @@ def generateList(listSize = 20):
 def bubbleSort(unsortedList):
     for sortingItemIndex in range(len(unsortedList)):
         for itemIndex in range(len(unsortedList)):
-            if unsortedList[sortingItemIndex] > unsortedList[itemIndex]:
+            if unsortedList[sortingItemIndex] < unsortedList[itemIndex]:
                 temp = unsortedList[sortingItemIndex]
                 unsortedList[sortingItemIndex] = unsortedList[itemIndex]
                 unsortedList[itemIndex] = temp
@@ -24,7 +24,7 @@ def main():
     # Generate a new list of values
     myList = generateList()
     print("Original list:\n", myList)
-    # Run bubble sort
+    # Run bubble sort\
     bubbleSort(copy.copy(myList))
     # Run merge sort
 
