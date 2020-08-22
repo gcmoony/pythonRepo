@@ -58,8 +58,21 @@ frameLabel = tk.Label(
     text = "I'm in Frame 01"
 ).pack()
 
-frame01.pack()
 
+frame02 = tk.Frame(
+    master = window,
+    relief = tk.RAISED,
+    borderwidth = 2
+)
+
+frameButton = tk.Button(
+    master = frame02,
+    text = "PUSH ME"
+).pack()
+
+
+frame01.pack()
+frame02.pack()
 
 # This goes last
 window.mainloop()

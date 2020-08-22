@@ -13,12 +13,10 @@ A repository dedicated to working with an assortment of Python related programs.
 | GUI | Attempts at creating programs utilizing GUIs built with Tkinter. | :heavy_minus_sign: | 
 | Other | Programs that I cannot classify for now... | :shrug: |
 
-<div style="text-align: center;">
+
 
 | Icon | Meaning |
 | :---: | :---: |
 | :white_check_mark: | Concluded |
 | :heavy_minus_sign: | Standby |
 | :small_orange_diamond: | Ongoing | 
-
-</div>
