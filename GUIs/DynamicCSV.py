@@ -26,8 +26,8 @@ class CsvWindow():
         self.addButton(self.contentControls, "+", buttonLen= 1, aCommand= lambda: self.addRow(self.entryFrame)).grid(row = 0, column = 2)
 
         tk.Label(self.contentControls, text = "Columns", padx = 2).grid(row = 0, column = 4)
-        self.addButton(self.contentControls, "-", buttonLen= 1).grid(row = 0, column = 3)
-        self.addButton(self.contentControls, "+", buttonLen= 1).grid(row = 0, column = 5)
+        self.addButton(self.contentControls, "-", buttonLen= 1, aCommand=lambda: self.printSlaves(self.entryFrame)).grid(row = 0, column = 3)
+        self.addButton(self.contentControls, "+", buttonLen= 1, aCommand=lambda: self.addCol(self.entryFrame)).grid(row = 0, column = 5)
 
         # Entry Frame Setup
         self.entryFrame = self.addFrame()
@@ -66,6 +66,19 @@ class CsvWindow():
         newRow.grid(row = self.rows, sticky = "nw")
         self.rows += 1
 
+    def addCol(self, aFrame):
+        for row, rowFrame in enumerate(aFrame.grid_slaves()):
+            newCol = tk.Entry(
+                rowFrame
+            )
+            newCol.grid(row = row, column = self.cols + 1)
+        self.cols += 1
+
+
+    def printSlaves(self, aFrame):
+        print(aFrame.grid_slaves())
+        for row, items in enumerate(aFrame.grid_slaves()):
+            print(f"Row {row}: {items}")
 
 
 def main():
