@@ -2,10 +2,9 @@ import tkinter as tk
 
 ####
 version = 0.01
-
 ####
 
-class CsvWindow():
+class CsvWindow:
     
 
     def __init__(self):
@@ -48,7 +47,8 @@ class CsvWindow():
         return newFrame
 
 
-    def addButton(self, aFrame, buttonText, aCommand = None, buttonLen = 12, buttonHeight = 1):
+    @staticmethod
+    def addButton(aFrame, buttonText, aCommand = None, buttonLen = 12, buttonHeight = 1):
         newButton = tk.Button(
             aFrame,
             text = buttonText,
@@ -71,18 +71,19 @@ class CsvWindow():
             newCol = tk.Entry(
                 rowFrame
             )
-            newCol.grid(row = row, column = self.cols + 1)
+            newCol.grid(row = row, column = self.cols)
         self.cols += 1
 
 
-    def printSlaves(self, aFrame):
+    @staticmethod
+    def printSlaves(aFrame):
         print(aFrame.grid_slaves())
         for row, items in enumerate(aFrame.grid_slaves()):
             print(f"Row {row}: {items}")
 
 
 def main():
-    myWindow = CsvWindow()
+    CsvWindow()
 
 
 if __name__ == '__main__':
