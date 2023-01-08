@@ -13,6 +13,7 @@ A repository dedicated to working with an assortment of Python related programs.
 | GUI | Attempts at creating programs utilizing GUIs built with Tkinter. |
 | Other | Programs that I cannot classify for now... |
 | Tools | Simple tools for simple tasks | 
+| Algorithms | Some problem solve things I tried |
 
 
 
